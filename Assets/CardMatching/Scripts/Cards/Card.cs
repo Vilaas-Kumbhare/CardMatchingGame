@@ -1,4 +1,5 @@
 using System;
+using CardMatching.Scripts.Audio;
 using UnityEngine;
 
 namespace CardMatching.Scripts.Cards
@@ -29,6 +30,7 @@ namespace CardMatching.Scripts.Cards
             _cardImage.enabled = true;
             _isCardRevealed = true;
             OnCardRevealed?.Invoke(this);
+            AudioManager.Instance.PlayAudio("Selected");
         }
 
         public void HideCard()

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using CardMatching.Scripts.Audio;
 using CardMatching.Scripts.Board;
 using CardMatching.Scripts.Score;
 using UnityEngine;
@@ -42,11 +43,13 @@ namespace CardMatching.Scripts.StateMachine
             if (_boardManager.CheckMatch())
             {
                 _boardManager.RemoveCardsFromTheBoard();
+                AudioManager.Instance.PlayAudio("Matched");
                 _score.UpdateScore(true);
             }
             else
             {
                 _boardManager.HideSelectedCards();
+                AudioManager.Instance.PlayAudio("notMatched");
                 _score.UpdateScore(false);
             }
             Exit();
